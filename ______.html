@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ═══ 교체 1. SEO 메타 ═══════════════════════════════════════════════ -->
+<title>이사 도우미 — 원룸 이사 준비물과 할 일 한 번에 정리 | 자취도구</title>
+<meta name="description" content="이사 예정일만 넣으면 D-30부터 이사 후까지 할 일이 날짜별로 나옵니다. 지금 가진 살림을 체크하면 사야 할 것만 추려 줍니다.">
+<link rel="canonical" href="https://moving-helper.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="이사 도우미 — 할 일과 준비물을 한 번에">
+<meta property="og:description" content="이사 예정일과 지금 가진 살림만 넣으면, 언제 뭘 해야 하고 뭘 사야 하는지 정리됩니다.">
+<meta property="og:url" content="https://moving-helper.netlify.app/">
+<meta property="og:locale" content="ko_KR">
+<meta name="robots" content="index,follow">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication",
+ "name":"이사 도우미","applicationCategory":"UtilitiesApplication",
+ "operatingSystem":"Web","inLanguage":"ko",
+ "offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"}}
+</script>
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+<style>
+:root{
+  --paper:#F2F1EE;
+  --card:#FFFFFF;
+  --ink:#000000;
+  --grey:#6E6B66;
+  --rule:#D5D2CB;
+  --mark:#FF5A1F;
+  --warn:#F6EFDC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;
+  font-size:17px;line-height:1.65;padding:0 20px 90px;
+}
+.wrap{max-width:680px;margin:0 auto}
+a{color:inherit}
+
+/* 머리 */
+.top{display:flex;align-items:baseline;gap:9px;padding:18px 0;
+  border-bottom:2px solid var(--ink);margin-bottom:34px}
+.top a.brand{text-decoration:none;font-weight:800;letter-spacing:-.03em}
+.top span{color:var(--grey);font-size:14px}
+
+h1{font-size:36px;font-weight:800;letter-spacing:-.04em;line-height:1.15}
+.lede{margin-top:12px;color:var(--grey);max-width:33em}
+
+/* 입력 */
+.setup{margin-top:28px;border:2px solid var(--ink);background:var(--card);padding:24px}
+.field+.field{margin-top:18px}
+.field>label{display:block;font-weight:700;margin-bottom:8px}
+input[type=date],select{width:100%;font:inherit;padding:13px 14px;
+  border:1.5px solid var(--rule);background:#fff;color:var(--ink);border-radius:0}
+:focus-visible{outline:3px solid var(--mark);outline-offset:2px}
+.go{margin-top:22px;width:100%;font:inherit;font-weight:800;font-size:18px;
+  padding:15px;border:0;background:var(--mark);color:#fff;cursor:pointer}
+.go:hover{background:#E64A10}
+.hint{margin-top:10px;font-size:14px;color:var(--grey)}
+
+/* 결과 요약 (붙박이) */
+#out[hidden]{display:none}
+.summary{position:sticky;top:0;z-index:5;background:var(--paper);
+  padding:12px 0 10px;border-bottom:2px solid var(--ink);margin-top:40px}
+.sumrow{display:flex;justify-content:space-between;align-items:baseline;
+  font-size:14px;font-weight:700;margin-bottom:7px}
+.dcount{font-size:15px}
+.meter{height:12px;border:1.5px solid var(--ink);background:#fff}
+.meter i{display:block;height:100%;width:0;background:var(--mark);transition:width .25s}
+
+/* 탭 */
+.tabs{display:flex;gap:0;margin-top:20px;border-bottom:1px solid var(--rule)}
+.tab{font:inherit;font-weight:700;background:none;border:0;cursor:pointer;
+  padding:11px 16px;color:var(--grey);border-bottom:3px solid transparent;margin-bottom:-1px}
+.tab[aria-selected=true]{color:var(--ink);border-bottom-color:var(--mark)}
+.pane[hidden]{display:none}
+
+/* 단계 */
+.stage{margin-top:30px}
+.stage-head{display:flex;align-items:baseline;gap:10px;
+  border-bottom:1px solid var(--rule);padding-bottom:8px}
+.stage-head h2{font-size:22px;font-weight:800;letter-spacing:-.03em}
+.stage-head .date{color:var(--grey);font-size:14px;font-weight:600}
+.stage-sub{color:var(--grey);font-size:14px;margin-top:6px}
+
+.item{display:flex;gap:11px;align-items:flex-start;padding:10px 0;
+  border-bottom:1px dotted var(--rule)}
+.item input{margin-top:5px;width:19px;height:19px;accent-color:var(--mark);flex:none}
+.item .body{flex:1}
+.item .body label{cursor:pointer;font-weight:500}
+.item .why{display:block;font-size:14px;color:var(--grey);margin-top:2px}
+.item.done .body label{color:var(--grey);text-decoration:line-through}
+.item.done .why{opacity:.5}
+
+/* 팁 */
+.tip{margin-top:14px;background:var(--warn);padding:13px 15px;font-size:15px;
+  border-left:4px solid var(--mark)}
+.tip b{font-weight:800}
+
+/* 제휴 링크 */
+.aff{display:inline-block;margin-top:8px;font-size:14px;font-weight:800;
+  color:var(--mark);text-decoration:none;border-bottom:2px solid var(--mark);padding-bottom:1px}
+.aff.big{display:block;margin-top:12px;background:var(--mark);color:#fff;
+  border:0;padding:12px 14px;text-align:center;font-size:16px}
+
+/* 살림 점검 */
+.gear h3{font-size:16px;font-weight:800;margin:24px 0 4px;
+  padding-bottom:6px;border-bottom:1px solid var(--rule)}
+.gear .grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 16px}
+.chk{display:flex;gap:9px;align-items:center;padding:7px 0}
+.chk input{width:18px;height:18px;accent-color:var(--ink);flex:none}
+.chk label{cursor:pointer;font-size:16px}
+.chk.have label{color:var(--grey)}
+
+.basket{margin-top:34px;border:2px solid var(--ink);background:var(--card);padding:22px}
+.basket h3{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.basket p.note{font-size:14px;color:var(--grey);margin-top:4px}
+.basket ul{list-style:none;margin-top:16px}
+.basket li{padding:11px 0;border-bottom:1px dotted var(--rule)}
+.basket li .nm{font-weight:700}
+.basket li .ds{display:block;font-size:14px;color:var(--grey)}
+.empty{color:var(--grey);margin-top:14px}
+
+.actions{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+.actions button{font:inherit;font-weight:700;padding:11px 16px;cursor:pointer;
+  background:#fff;border:1.5px solid var(--ink);color:var(--ink)}
+.actions button:hover{background:var(--ink);color:#fff}
+
+/* 색인용 본문 */
+.copy{margin-top:56px;border-top:2px solid var(--ink);padding-top:26px}
+.copy h2{font-size:22px;font-weight:800;letter-spacing:-.03em;margin-bottom:12px}
+.copy h3{font-size:17px;font-weight:700;margin:22px 0 6px}
+.copy p{margin-bottom:14px;max-width:36em}
+
+.more{margin-top:44px;border-top:1px solid var(--rule);padding-top:20px}
+.more h2{font-size:15px;font-weight:700;color:var(--grey);margin-bottom:11px}
+.more ul{list-style:none;display:grid;gap:9px}
+.more a{text-decoration:none;border-bottom:1.5px solid var(--rule);
+  padding-bottom:2px;font-weight:600}
+.more a:hover{border-color:var(--ink)}
+
+footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:16px;
+  font-size:13px;color:var(--grey)}
+footer p{margin-bottom:8px;max-width:40em}
+
+@media (max-width:520px){
+  body{font-size:16px;padding:0 16px 70px}
+  h1{font-size:28px}
+  .setup,.basket{padding:18px}
+  .gear .grid{grid-template-columns:1fr}
+  .tab{padding:10px 12px;font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <a class="brand" href="/">자취도구</a>
+  <span>설치 없이 쓰는 자취 도구 모음</span>
+</header>
+
+<h1>이사 도우미</h1>
+<p class="lede">이사 예정일을 넣으면 언제 뭘 해야 하는지 날짜로 나옵니다. 지금 가진 살림을 체크하면 사야 할 것만 추려 줍니다.</p>
+
+<section class="setup">
+  <div class="field">
+    <label for="date">이사 예정일</label>
+    <input type="date" id="date">
+  </div>
+  <div class="field">
+    <label for="kind">어떤 이사인가요</label>
+    <select id="kind">
+      <option value="first">처음 자취를 시작합니다</option>
+      <option value="move">지금 자취 중이고 다른 집으로 갑니다</option>
+      <option value="back">자취를 정리하고 본가로 들어갑니다</option>
+    </select>
+  </div>
+  <button class="go" id="run">준비 목록 만들기</button>
+  <p class="hint">가입도 저장도 없습니다. 결과는 새로고침하면 사라집니다.</p>
+</section>
+
+<section id="out" hidden>
+  <div class="summary">
+    <div class="sumrow">
+      <span class="dcount" id="dday"></span>
+      <span id="pct">0 / 0 완료</span>
+    </div>
+    <div class="meter"><i id="bar"></i></div>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" id="t1" role="tab" aria-selected="true" aria-controls="p1">할 일 순서</button>
+    <button class="tab" id="t2" role="tab" aria-selected="false" aria-controls="p2">살림 점검</button>
+  </div>
+
+  <div class="pane" id="p1" role="tabpanel" aria-labelledby="t1"></div>
+
+  <div class="pane" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+    <div class="gear" id="gear"></div>
+    <div class="basket">
+      <h3>사야 할 것</h3>
+      <p class="note">위에서 체크하지 않은 것만 모았습니다. 이미 있는 건 목록에서 빠집니다.</p>
+      <div id="basketBody"><p class="empty">위 항목을 체크하면 여기에 정리됩니다.</p></div>
+      <div class="actions">
+        <button id="copy">목록 복사</button>
+        <button id="reset">체크 초기화</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="copy">
+  <h2>이사에서 돈이 새는 지점은 정해져 있다</h2>
+  <p>원룸 이사에서 사람들이 손해를 보는 건 짐을 잘못 싸서가 아닙니다. 날짜가 정해진 일을 놓쳐서입니다. 집주인에게 언제까지 알려야 하는지, 인터넷 위약금이 언제 발생하는지, 전입신고와 확정일자를 며칠 안에 끝내야 보증금이 보호되는지가 전부 따로 놉니다.</p>
+  <p>그래서 할 일을 한 덩어리로 보면 반드시 뭔가를 흘립니다. D-30, D-14, D-7, D-3, 당일, 이사 후 1주로 끊어서 봐야 각 구간에 마감이 걸린 일이 무엇인지 보입니다.</p>
+
+  <h3>가장 많이 놓치는 세 가지</h3>
+  <p>첫째, 인터넷 이전 신청입니다. 이전 설치는 보통 일주일 전에 예약해야 이사 당일에 됩니다. 늦으면 며칠을 데이터로 버티게 됩니다. 둘째, 대형폐기물 스티커입니다. 안 붙이고 내놓으면 과태료가 나오고, 이사 당일에 신청하면 수거일이 안 맞습니다. 셋째, 계량기 사진입니다. 이사 당일 수도·전기·가스 계량기를 찍어두지 않으면 전 세입자나 다음 세입자의 요금을 떠안는 분쟁이 생깁니다.</p>
+
+  <h3>살림은 다 사는 게 아니라 빠진 것만 산다</h3>
+  <p>처음 자취를 시작할 때 준비물 목록을 그대로 다 사면 백만원 단위가 나옵니다. 실제로는 본가에서 가져올 수 있는 것, 첫 달에 없어도 되는 것, 없으면 당장 곤란한 것이 섞여 있습니다. 이 페이지의 살림 점검은 가진 것을 체크하면 빠진 것만 남기는 방식이라, 목록을 보고 순서를 정하기 쉽습니다.</p>
+
+  <h3>본가로 돌아가는 경우</h3>
+  <p>자취를 정리하는 이사는 준비물보다 처분이 일입니다. 가전과 가구는 중고 거래에 최소 2주가 걸리고, 안 팔리면 폐기물 비용이 듭니다. 계약 만료일에서 거꾸로 날짜를 잡아야 합니다.</p>
+</section>
+
+<nav class="more">
+  <h2>같이 쓰는 도구</h2>
+  <ul>
+    <li><a href="https://SLUG-2.netlify.app/">전기요금 누진세 계산기</a></li>
+    <li><a href="https://SLUG-3.netlify.app/">자취 월 생활비 계산기</a></li>
+    <li><a href="https://SLUG-4.netlify.app/">에어컨 적정 평수 계산기</a></li>
+  </ul>
+</nav>
+
+<footer>
+  <p>이 페이지는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+  <p>자취 관련 글은 <a href="https://sololife29.blogspot.com" rel="noopener">sololife29.blogspot.com</a>에 더 있습니다.</p>
+  <p>입력한 내용은 어디에도 저장되지 않습니다.</p>
+</footer>
+
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   제휴 링크 — 여기 한 곳에서만 관리한다
+   • 쿠팡: 파트너스 "간편 링크" URL (https://link.coupang.com/...) 만 넣는다.
+           iframe 배너 코드는 넣지 말 것. 본문에 코드가 그대로 노출된다.
+   • CPA : 애드픽 등에서 받은 캠페인 URL. 인터넷 가입이 최고 단가 슬롯이다.
+   • 빈 문자열("")이면 링크가 표시되지 않는다. 안전하게 비워둬도 동작한다.
+   ═════════════════════════════════════════════════════════════════════ */
+const AFF = {
+  // ── CPA (건당 정액 · 우선순위 높음) ──────────────────
+  internet : { url:"", text:"인터넷·TV 이전/신규 가입 비교하기" },
+  moveQuote: { url:"", text:"이사 업체 견적 한 번에 받기" },
+  // ── CPS (쿠팡) ───────────────────────────────────────
+  box      : { url:"", text:"이사 박스 보기" },
+  tape     : { url:"", text:"박스테이프·유성펜 보기" },
+  vacbag   : { url:"", text:"의류 압축팩 보기" },
+  bubble   : { url:"", text:"에어캡·완충재 보기" },
+  clean    : { url:"", text:"청소용품 세트 보기" },
+  mold     : { url:"", text:"곰팡이·물때 제거제 보기" },
+  curtain  : { url:"", text:"암막커튼 보기" },
+  rack     : { url:"", text:"행거·수납장 보기" },
+  bathset  : { url:"", text:"욕실 선반 보기" }
+};
+function affLink(key, big){
+  const a = AFF[key];
+  if(!a || !a.url) return "";
+  return `<a class="aff${big?" big":""}" href="${a.url}" target="_blank"
+            rel="nofollow sponsored noopener">${a.text}</a>`;
+}
+
+/* ═══ 할 일 데이터 ═══════════════════════════════════════════════════════
+   only: 특정 이사 유형에서만 나오는 항목 ("first"|"move"|"back")
+   ═════════════════════════════════════════════════════════════════════ */
+const STAGES = [
+  { t:"D-30", d:30, sub:"계약과 통보. 여기서 늦으면 뒤가 전부 밀린다.",
+    tip:"계약 만료 1개월 전까지 퇴거 의사를 안 밝히면 자동으로 계약이 연장되는 경우가 있습니다. 문자로 남겨 기록을 만들어 두세요.",
+    items:[
+      {t:"집주인에게 퇴거 의사 전달", why:"통화 말고 문자로. 기록이 남아야 분쟁을 막습니다.", only:["move","back"]},
+      {t:"새집 계약서 특약 확인", why:"수리 책임, 반려동물, 주차 항목을 특히 봅니다.", only:["first","move"]},
+      {t:"이사 업체 견적 3곳 비교", why:"같은 짐인데 견적이 두 배까지 벌어집니다.", aff:"moveQuote"},
+      {t:"이사 날짜 확정하고 연차 쓰기", why:"손 없는 날은 요금이 붙고 예약도 빨리 찹니다."}
+    ]},
+  { t:"D-14", d:14, sub:"안 쓰는 물건부터 싼다.",
+    tip:"이 시점에 짐을 줄이면 이사 비용이 직접 줄어듭니다. 버릴지 말지 고민되는 물건은 대부분 버려도 됩니다.",
+    items:[
+      {t:"이사 박스 주문", why:"원룸 기준 중형 15~20개면 대체로 맞습니다.", aff:"box"},
+      {t:"박스테이프와 유성펜 준비", why:"박스 옆면에 방 이름을 쓰면 푸는 시간이 반으로 줍니다.", aff:"tape"},
+      {t:"계절 지난 옷 압축팩에 넣기", why:"부피가 가장 크게 줄어드는 짐입니다.", aff:"vacbag"},
+      {t:"안 쓰는 물건 중고로 처분", why:"거래에 2주는 걸립니다. 지금 올려야 팝니다."},
+      {t:"가전·가구 처분 결정", why:"안 팔리면 폐기물 비용이 듭니다.", only:["back"]}
+    ]},
+  { t:"D-7", d:7, sub:"행정 처리 주간. 대부분의 사고가 여기서 난다.",
+    tip:"인터넷 이전 설치는 보통 일주일 전 예약이 필요합니다. 약정이 남았다면 위약금과 신규 가입 지원금을 비교해 보는 편이 낫습니다.",
+    items:[
+      {t:"인터넷·TV 이전 또는 신규 신청", why:"늦으면 며칠간 데이터로 버티게 됩니다.", aff:"internet", affBig:true},
+      {t:"대형폐기물 스티커 신청", why:"안 붙이고 내놓으면 과태료 대상입니다."},
+      {t:"우편물 주소 이전 서비스 신청", why:"우체국에서 무료로 3개월간 전달해 줍니다."},
+      {t:"에어캡·완충재 준비", why:"그릇과 모니터는 신문지로는 안 됩니다.", aff:"bubble"},
+      {t:"도시가스 중지·개시 예약", why:"당일 전화하면 기사 배정이 안 됩니다."}
+    ]},
+  { t:"D-3", d:3, sub:"비우고 닦는다.",
+    tip:"청소 상태는 보증금 반환에 직접 영향을 줍니다. 특히 곰팡이와 실리콘 때는 빼기 전에 처리해 두세요.",
+    items:[
+      {t:"냉장고 비우기", why:"이사 12시간 전에는 전원을 빼야 물이 안 샙니다."},
+      {t:"청소용품 준비", why:"새집 청소는 짐 들어오기 전이 유일한 기회입니다.", aff:"clean"},
+      {t:"곰팡이·물때 제거", why:"실리콘 곰팡이는 방치하면 보증금에서 깎입니다.", aff:"mold"},
+      {t:"귀중품·서류 따로 챙기기", why:"이삿짐 차에 싣지 않고 직접 들고 갑니다."},
+      {t:"관리비·공과금 정산 요청", why:"이사 후에 연락하면 처리가 늘어집니다."}
+    ]},
+  { t:"이사 당일", d:0, sub:"만드는 날이 아니라 확인하는 날이다.",
+    tip:"계량기 사진 세 장이 나중에 몇십만원짜리 증거가 됩니다. 수도, 전기, 가스 전부 찍으세요.",
+    items:[
+      {t:"수도·전기·가스 계량기 사진 촬영", why:"전 집과 새집 모두. 요금 분쟁의 유일한 증거입니다."},
+      {t:"빈 집 상태 사진 촬영", why:"원상복구 범위를 두고 다툴 때 씁니다."},
+      {t:"짐 개수 확인 후 업체 결제", why:"트럭이 떠난 뒤에는 확인이 불가능합니다."},
+      {t:"현관 비밀번호 변경", why:"전 세입자 번호가 그대로인 경우가 흔합니다."}
+    ]},
+  { t:"이사 후 1주", d:-7, sub:"여기까지 해야 이사가 끝난다.",
+    tip:"전입신고와 확정일자는 보증금을 지키는 장치입니다. 하루라도 미루면 그 사이에 순위가 밀릴 수 있습니다.",
+    items:[
+      {t:"전입신고하고 확정일자 받기", why:"주민센터 또는 정부24. 이사 당일 처리가 가장 안전합니다.", only:["first","move"]},
+      {t:"보증금 반환 확인", why:"입금 전까지 열쇠를 넘기지 않는 편이 안전합니다.", only:["move","back"]},
+      {t:"암막커튼 설치", why:"창 크기를 재고 주문해야 다시 사지 않습니다.", aff:"curtain", only:["first","move"]},
+      {t:"행거·수납장 배치", why:"수납이 정해져야 짐 푸는 게 끝납니다.", aff:"rack", only:["first","move"]},
+      {t:"욕실 선반 달기", why:"바닥에 두면 물때가 바로 생깁니다.", aff:"bathset", only:["first","move"]}
+    ]}
+];
+
+/* ═══ 살림 점검 데이터 ═══════════════════════════════════════════════════ */
+const GEAR = [
+  { g:"당장 없으면 곤란한 것", items:[
+    {n:"이불과 베개", d:"첫날 밤에 반드시 필요합니다"},
+    {n:"수건 3장 이상", d:"세탁 주기를 생각하면 최소치입니다"},
+    {n:"휴지와 물티슈", d:""},
+    {n:"손세정제·바디워시", d:""},
+    {n:"드라이버·가위·테이프", d:"조립과 개봉에 계속 씁니다"},
+    {n:"멀티탭", d:"원룸은 콘센트가 늘 모자랍니다"},
+    {n:"쓰레기봉투", d:"지역 지정봉투를 확인하세요"}
+  ]},
+  { g:"주방", items:[
+    {n:"냄비 하나, 프라이팬 하나", d:"둘이면 대부분 됩니다"},
+    {n:"전기밥솥 또는 즉석밥", d:""},
+    {n:"식기와 수저", d:"2인분이면 충분합니다"},
+    {n:"칼과 도마", d:""},
+    {n:"주방세제·수세미", d:""},
+    {n:"밀폐용기", d:"남은 재료를 버리지 않게 해줍니다"}
+  ]},
+  { g:"세탁과 청소", items:[
+    {n:"세탁세제와 섬유유연제", d:""},
+    {n:"빨래건조대", d:"원룸에서 가장 자리를 많이 먹습니다"},
+    {n:"세탁망", d:"속옷과 니트 수명이 달라집니다"},
+    {n:"청소기 또는 밀대", d:""},
+    {n:"욕실 청소솔", d:""}
+  ]},
+  { g:"수납과 가구", items:[
+    {n:"행거 또는 옷장", d:"옵션에 없는 집이 많습니다"},
+    {n:"옷걸이", d:"20개 정도는 필요합니다"},
+    {n:"수납 선반", d:""},
+    {n:"암막커튼", d:"창 크기를 먼저 재세요"},
+    {n:"빨래바구니", d:""}
+  ]},
+  { g:"있으면 삶이 편해지는 것", items:[
+    {n:"제습제 또는 제습기", d:"원룸 곰팡이의 대부분은 습도 문제입니다"},
+    {n:"스탠드 조명", d:"천장등만 있으면 밤에 피로합니다"},
+    {n:"서큘레이터", d:"냉난방비가 줄어듭니다"},
+    {n:"체중계·전신거울", d:""}
+  ]}
+];
+/* 살림 항목 → 제휴 키 연결 (없으면 링크 없음) */
+const GEAR_AFF = {
+  "암막커튼":"curtain", "행거 또는 옷장":"rack", "수납 선반":"rack"
+};
+
+/* ═══ 동작 ═══════════════════════════════════════════════════════════════ */
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const md = d => `${d.getMonth()+1}월 ${d.getDate()}일`;
+const DOW = ["일","월","화","수","목","금","토"];
+
+$("#run").addEventListener("click", build);
+
+function build(){
+  const v = $("#date").value;
+  if(!v){ $("#date").focus(); return; }
+  const kind = $("#kind").value;
+  const base = new Date(v + "T00:00:00");
+  const today = new Date(); today.setHours(0,0,0,0);
+  const diff = Math.round((base - today) / 86400000);
+
+  $("#dday").textContent = diff > 0 ? `이사까지 ${diff}일 · ${md(base)}(${DOW[base.getDay()]})`
+                        : diff === 0 ? `오늘이 이사일입니다`
+                        : `이사한 지 ${-diff}일`;
+
+  /* 할 일 */
+  $("#p1").innerHTML = STAGES.map((s, si) => {
+    const day = new Date(base); day.setDate(day.getDate() - s.d);
+    const rows = s.items
+      .filter(it => !it.only || it.only.includes(kind))
+      .map((it, ii) => `
+        <div class="item">
+          <input type="checkbox" id="k${si}_${ii}" class="tick">
+          <div class="body">
+            <label for="k${si}_${ii}">${esc(it.t)}</label>
+            ${it.why ? `<span class="why">${esc(it.why)}</span>` : ""}
+            ${it.aff ? affLink(it.aff, it.affBig) : ""}
+          </div>
+        </div>`).join("");
+    if(!rows) return "";
+    return `<section class="stage">
+      <div class="stage-head"><h2>${s.t}</h2><span class="date">${md(day)}(${DOW[day.getDay()]})</span></div>
+      <p class="stage-sub">${esc(s.sub)}</p>
+      <div class="tip"><b>놓치면 돈이 나갑니다.</b> ${esc(s.tip)}</div>
+      ${rows}
+    </section>`;
+  }).join("");
+
+  /* 살림 점검 */
+  $("#gear").innerHTML = GEAR.map((g, gi) => `
+    <h3>${esc(g.g)}</h3>
+    <div class="grid">
+      ${g.items.map((it, ii) => `
+        <div class="chk">
+          <input type="checkbox" id="g${gi}_${ii}" class="own"
+                 data-n="${esc(it.n)}" data-d="${esc(it.d)}">
+          <label for="g${gi}_${ii}">${esc(it.n)}</label>
+        </div>`).join("")}
+    </div>`).join("");
+
+  $("#out").hidden = false;
+  tally(); basket();
+  $("#out").scrollIntoView({block:"start"});
+}
+
+/* 체크 반응 */
+document.addEventListener("change", e => {
+  if(e.target.classList.contains("tick")){
+    e.target.closest(".item").classList.toggle("done", e.target.checked);
+    tally();
+  }
+  if(e.target.classList.contains("own")){
+    e.target.closest(".chk").classList.toggle("have", e.target.checked);
+    basket();
+  }
+});
+
+function tally(){
+  const all = $$(".tick"), on = $$(".tick:checked");
+  $("#pct").textContent = `${on.length} / ${all.length} 완료`;
+  $("#bar").style.width = all.length ? (on.length / all.length * 100) + "%" : "0";
+}
+
+function basket(){
+  const need = $$(".own").filter(c => !c.checked);
+  const box = $("#basketBody");
+  if(!$$(".own").length){ box.innerHTML = `<p class="empty">위 항목을 체크하면 여기에 정리됩니다.</p>`; return; }
+  if(!need.length){ box.innerHTML = `<p class="empty">전부 갖추셨습니다. 살 것이 없습니다.</p>`; return; }
+  box.innerHTML = `<ul>${need.map(c => {
+    const n = c.dataset.n, d = c.dataset.d, k = GEAR_AFF[n];
+    return `<li><span class="nm">${esc(n)}</span>
+      ${d ? `<span class="ds">${esc(d)}</span>` : ""}
+      ${k ? affLink(k) : ""}</li>`;
+  }).join("")}</ul>`;
+}
+
+/* 탭 */
+$$(".tab").forEach(t => t.addEventListener("click", () => {
+  $$(".tab").forEach(x => x.setAttribute("aria-selected", x === t));
+  $("#p1").hidden = (t.id !== "t1");
+  $("#p2").hidden = (t.id !== "t2");
+}));
+
+/* 목록 복사 */
+$("#copy").addEventListener("click", async () => {
+  const need = $$(".own").filter(c => !c.checked).map(c => "· " + c.dataset.n);
+  if(!need.length) return;
+  const txt = "사야 할 것\n" + need.join("\n");
+  try{ await navigator.clipboard.writeText(txt); $("#copy").textContent = "복사했습니다"; }
+  catch{ $("#copy").textContent = "복사할 수 없습니다"; }
+  setTimeout(() => $("#copy").textContent = "목록 복사", 1600);
+});
+
+$("#reset").addEventListener("click", () => {
+  $$(".own").forEach(c => { c.checked = false; c.closest(".chk").classList.remove("have"); });
+  basket();
+});
+</script>
+</body>
+</html>
