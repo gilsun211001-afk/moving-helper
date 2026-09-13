@@ -161,6 +161,24 @@ footer p{margin-bottom:8px;max-width:40em}
   .tab{padding:10px 12px;font-size:15px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+/* 개인 물품 및 계산 도구 */
+.personal-form{margin-top:16px}
+.personal-form label{display:block;font-size:14px;font-weight:700}
+.personal-row{display:flex;gap:8px;margin-top:6px}
+.personal-row input{flex:1;min-width:0}
+.personal-row button{flex:none;font:inherit;font-weight:700;background:#fff;border:1.5px solid var(--ink);padding:10px 12px;cursor:pointer}
+.personal-row input,.calculators input{width:100%;min-width:0;font:inherit;padding:10px;border:1.5px solid var(--rule);border-radius:0}
+.basket .nm{overflow-wrap:anywhere}
+.personal-check{width:18px;height:18px;margin-right:8px;accent-color:var(--mark)}
+.calculators{margin-top:44px;border-top:2px solid var(--ink);padding-top:26px}
+.calculators h2{font-size:22px;margin-bottom:12px}
+.calculators details{background:var(--card);border:1px solid var(--rule);padding:16px;margin-top:12px}
+.calculators summary{font-weight:800;cursor:pointer}
+.calculator-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.calculator-fields label{display:block;font-size:14px;font-weight:700}
+.calculators output{display:block;margin-top:16px;font-weight:700;overflow-wrap:anywhere}
+.calculators .tip{font-size:14px}
+@media(max-width:400px){.calculator-fields{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -212,6 +230,11 @@ footer p{margin-bottom:8px;max-width:40em}
     <div class="basket">
       <h3>사야 할 것</h3>
       <p class="note">위에서 체크하지 않은 것만 모았습니다. 이미 있는 건 목록에서 빠집니다.</p>
+      <form id="personalForm" class="personal-form">
+        <label for="personalName">개인 물품 직접 추가</label>
+        <div class="personal-row"><input id="personalName" type="text" autocomplete="off"><button type="submit">추가</button></div>
+        <p id="personalNotice" class="hint" role="status"></p>
+      </form>
       <div id="basketBody"><p class="empty">위 항목을 체크하면 여기에 정리됩니다.</p></div>
       <div class="actions">
         <button id="copy">목록 복사</button>
@@ -234,6 +257,40 @@ footer p{margin-bottom:8px;max-width:40em}
 
   <h3>본가로 돌아가는 경우</h3>
   <p>자취를 정리하는 이사는 준비물보다 처분이 일입니다. 가전과 가구는 중고 거래에 최소 2주가 걸리고, 안 팔리면 폐기물 비용이 듭니다. 계약 만료일에서 거꾸로 날짜를 잡아야 합니다.</p>
+</section>
+
+<section class="calculators" aria-labelledby="calculatorTitle">
+  <h2 id="calculatorTitle">이사 후 계산 도구</h2>
+  <details>
+    <summary>전기요금 계산기 · 공식 계산 안내</summary>
+    <p class="hint">대략적인 감을 잡는 용도의 안내입니다. 여기서는 정확한 원화 금액을 계산하지 않습니다.</p>
+    <p class="tip">정확한 요금은 한전 공식 요금계산기에서 확인하세요. 실제 청구액과 차이가 날 수 있습니다.</p>
+    <a class="aff" href="https://online.kepco.co.kr/" target="_blank" rel="noopener">한전ON에서 공식 요금계산기 확인</a>
+  </details>
+  <details>
+    <summary>자취 월 생활비 계산기</summary>
+    <p class="hint">빈 값은 0원입니다. 고정비는 월세·관리비·통신비, 나머지는 변동비로 합산합니다.</p>
+    <div id="costFields" class="calculator-fields"><label for="cost-rent">월세 (원)<input id="cost-rent" type="number" min="0" step="1" inputmode="numeric"></label>
+<label for="cost-maintenance">관리비 (원)<input id="cost-maintenance" type="number" min="0" step="1" inputmode="numeric"></label>
+<label for="cost-electric">전기 (원)<input id="cost-electric" type="number" min="0" step="1" inputmode="numeric"></label>
+<label for="cost-gas">가스 (원)<input id="cost-gas" type="number" min="0" step="1" inputmode="numeric"></label>
+<label for="cost-water">수도 (원)<input id="cost-water" type="number" min="0" step="1" inputmode="numeric"></label>
+<label for="cost-telecom">통신비 (원)<input id="cost-telecom" type="number" min="0" step="1" inputmode="numeric"></label>
+<label for="cost-food">식비 (원)<input id="cost-food" type="number" min="0" step="1" inputmode="numeric"></label>
+<label for="cost-transport">교통비 (원)<input id="cost-transport" type="number" min="0" step="1" inputmode="numeric"></label>
+<label for="cost-other">기타 (원)<input id="cost-other" type="number" min="0" step="1" inputmode="numeric"></label></div>
+    <output id="costResult" aria-live="polite"></output>
+  </details>
+  <details>
+    <summary>에어컨 적정 평수 계산기</summary>
+    <div class="calculator-fields">
+      <label for="acArea">면적<input id="acArea" type="number" min="0" step="any" inputmode="decimal"></label>
+      <label for="acUnit">단위<select id="acUnit"><option value="pyeong">평</option><option value="sqm">㎡</option></select></label>
+    </div>
+    <output id="acResult" aria-live="polite">0보다 큰 면적을 입력하세요.</output>
+    <p class="hint">1평 = 3.3058㎡. 표시 용량은 냉방 용량이며 전력 소비량이 아닙니다.</p>
+    <p class="tip">제조사/실제 공간 조건(층고, 단열, 서향 등)에 따라 달라지는 대략적인 참고값입니다. 정확한 구매는 제조사 권장표를 확인하세요.</p>
+  </details>
 </section>
 
 <footer>
@@ -456,17 +513,40 @@ function tally(){
   $("#bar").style.width = all.length ? (on.length / all.length * 100) + "%" : "0";
 }
 
+const personalItems = [];
+const itemKey = name => name.replace(/\s/g, "").toLowerCase();
+$("#personalForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const name = $("#personalName").value.trim();
+  if(!name){ $("#personalNotice").textContent = "물품명을 입력하세요."; return; }
+  const duplicate = GEAR.some(g => g.items.some(it => itemKey(it.n) === itemKey(name)))
+    || personalItems.some(it => itemKey(it.name) === itemKey(name));
+  if(duplicate){ $("#personalNotice").textContent = "이미 있는 항목입니다."; return; }
+  personalItems.push({name, checked:false});
+  $("#personalName").value = "";
+  $("#personalNotice").textContent = "추가했습니다.";
+  basket();
+  $("#personalName").focus();
+});
+$("#basketBody").addEventListener("change", e => {
+  if(!e.target.classList.contains("personal-check")) return;
+  personalItems[Number(e.target.dataset.index)].checked = e.target.checked;
+  basket();
+});
+
 function basket(){
   const need = $$(".own").filter(c => !c.checked);
   const box = $("#basketBody");
   if(!$$(".own").length){ box.innerHTML = `<p class="empty">위 항목을 체크하면 여기에 정리됩니다.</p>`; return; }
-  if(!need.length){ box.innerHTML = `<p class="empty">전부 갖추셨습니다. 살 것이 없습니다.</p>`; return; }
+  if(!need.length && !personalItems.some(it => !it.checked)){ box.innerHTML = `<p class="empty">전부 갖추셨습니다. 살 것이 없습니다.</p>`; return; }
   box.innerHTML = `<ul>${need.map(c => {
     const n = c.dataset.n, d = c.dataset.d, k = GEAR_AFF[n];
     return `<li><span class="nm">${esc(n)}</span>
       ${d ? `<span class="ds">${esc(d)}</span>` : ""}
       ${k ? affLink(k) : ""}</li>`;
-  }).join("")}</ul>`;
+  }).join("")}${personalItems.map((it, index) => it.checked ? "" :
+    `<li><label class="nm"><input type="checkbox" class="personal-check" data-index="${index}">${esc(it.name)}</label></li>`
+  ).join("")}</ul>`;
 }
 
 /* 탭 */
@@ -479,6 +559,7 @@ $$(".tab").forEach(t => t.addEventListener("click", () => {
 /* 목록 복사 */
 $("#copy").addEventListener("click", async () => {
   const need = $$(".own").filter(c => !c.checked).map(c => "· " + c.dataset.n);
+  need.push(...personalItems.filter(it => !it.checked).map(it => "· " + it.name));
   if(!need.length) return;
   const txt = "사야 할 것\n" + need.join("\n");
   try{ await navigator.clipboard.writeText(txt); $("#copy").textContent = "복사했습니다"; }
@@ -487,9 +568,39 @@ $("#copy").addEventListener("click", async () => {
 });
 
 $("#reset").addEventListener("click", () => {
+  personalItems.forEach(it => { it.checked = false; });
   $$(".own").forEach(c => { c.checked = false; c.closest(".chk").classList.remove("have"); });
   basket();
 });
+/* 계산 도구: 입력은 메모리에서만 사용 */
+function calculateCosts(){
+  const fields = $$("#costFields input");
+  if(fields.some(input => !input.validity.valid)){
+    $("#costResult").textContent = "생활비는 0 이상의 정수로 입력하세요."; return;
+  }
+  const value = id => Number($("#cost-" + id).value || 0);
+  const fixed = value("rent") + value("maintenance") + value("telecom");
+  const variable = ["electric","gas","water","food","transport","other"].reduce((sum,id) => sum + value(id), 0);
+  if(!Number.isSafeInteger(fixed + variable)){
+    $("#costResult").textContent = "입력 금액이 너무 큽니다. 금액을 줄여 주세요."; return;
+  }
+  const won = n => n.toLocaleString("ko-KR") + "원";
+  $("#costResult").textContent = `월 예상 생활비 ${won(fixed + variable)} · 고정비 ${won(fixed)} · 변동비 ${won(variable)}`;
+}
+$("#costFields").addEventListener("input", calculateCosts);
+calculateCosts();
+function calculateAC(){
+  const area = Number($("#acArea").value);
+  const pyeong = $("#acUnit").value === "pyeong" ? area : area / 3.3058;
+  const sqm = $("#acUnit").value === "sqm" ? area : area * 3.3058;
+  if(!$("#acArea").validity.valid || area <= 0 || !Number.isFinite(sqm) || !Number.isFinite(pyeong)){
+    $("#acResult").textContent = "0보다 큰 유효한 면적을 입력하세요."; return;
+  }
+  const capacity = pyeong <= 6 ? "2.3~3.2" : pyeong <= 10 ? "3.2~4.0" : pyeong <= 13 ? "4.0~5.0" : pyeong <= 17 ? "5.0~6.0" : null;
+  $("#acResult").textContent = `${pyeong.toLocaleString("ko-KR", {maximumFractionDigits:2})}평 = ${sqm.toLocaleString("ko-KR", {maximumFractionDigits:2})}㎡ · 권장 냉방 용량(참고): ${capacity ? capacity + " kW" : "6.0 kW 이상"}`;
+}
+$("#acArea").addEventListener("input", calculateAC);
+$("#acUnit").addEventListener("change", calculateAC);
 </script>
 </body>
 </html>
