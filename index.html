@@ -518,7 +518,7 @@ const itemKey = name => name.replace(/\s/g, "").toLowerCase();
 $("#personalForm").addEventListener("submit", e => {
   e.preventDefault();
   const name = $("#personalName").value.trim();
-  if(!name) return;
+  if(!name){ $("#personalNotice").textContent = "물품명을 입력하세요."; return; }
   const duplicate = GEAR.some(g => g.items.some(it => itemKey(it.n) === itemKey(name)))
     || personalItems.some(it => itemKey(it.name) === itemKey(name));
   if(duplicate){ $("#personalNotice").textContent = "이미 있는 항목입니다."; return; }
