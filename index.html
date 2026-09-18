@@ -15,6 +15,10 @@
 <meta property="og:description" content="이사 예정일과 지금 가진 살림만 넣으면, 언제 뭘 해야 하고 뭘 사야 하는지 정리됩니다.">
 <meta property="og:url" content="https://moving-helper.netlify.app/">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://moving-helper.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication",
@@ -179,6 +183,20 @@ footer p{margin-bottom:8px;max-width:40em}
 .calculators output{display:block;margin-top:16px;font-weight:700;overflow-wrap:anywhere}
 .calculators .tip{font-size:14px}
 @media(max-width:400px){.calculator-fields{grid-template-columns:1fr}}
+
+/* 항상 보이는 제품 섹션 */
+.shop{margin-top:52px;border-top:2px solid var(--ink);padding-top:26px}
+.shop h2{font-size:22px;font-weight:800;letter-spacing:-.03em}
+.shop .note{font-size:14px;color:var(--grey);margin-top:6px;max-width:36em}
+.shop h3{font-size:15px;font-weight:800;margin:26px 0 4px}
+.shop .sub{font-size:13.5px;color:var(--grey);margin-bottom:9px}
+.shopgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.shopgrid a{display:block;text-decoration:none;font-weight:700;font-size:15px;
+padding:13px 14px;border:1.5px solid var(--ink);background:var(--card)}
+.shopgrid a:hover{background:var(--ink);color:#fff}
+.shopgrid a.hot{background:var(--mark);color:#fff;border-color:var(--mark)}
+.shopgrid a.hot:hover{background:#E64A10}
+@media(max-width:520px){.shopgrid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -239,9 +257,40 @@ footer p{margin-bottom:8px;max-width:40em}
       <div class="actions">
         <button id="copy">목록 복사</button>
         <button id="reset">체크 초기화</button>
+        <button id="share">링크 공유</button>
       </div>
     </div>
   </div>
+</section>
+
+<section class="shop">
+<h2>이사 때 많이 찾는 것</h2>
+<p class="note">날짜를 넣지 않아도 볼 수 있습니다. 링크를 통해 구매하시면 일정액의 수수료를 받습니다.</p>
+
+<h3>짐 쌀 때</h3>
+<p class="sub">D-14 전후에 필요합니다. 박스는 원룸 기준 중형 15~20개면 대체로 맞습니다.</p>
+<div class="shopgrid">
+<a class="hot" href="https://bitl.bz/9ST3nL" target="_blank" rel="nofollow sponsored noopener">박스테이프, 커터</a>
+<a href="https://bitl.bz/KqYb7i" target="_blank" rel="nofollow sponsored noopener">이사 박스</a>
+<a href="https://bitl.bz/gwRH0B" target="_blank" rel="nofollow sponsored noopener">의류 압축팩</a>
+<a href="https://bitl.bz/W3HBMS" target="_blank" rel="nofollow sponsored noopener">에어캡, 완충재</a>
+</div>
+
+<h3>새집 정리할 때</h3>
+<p class="sub">커튼은 창 크기를 먼저 재세요. 다시 사는 경우가 가장 많은 품목입니다.</p>
+<div class="shopgrid">
+<a class="hot" href="https://bitl.bz/qy6lpz" target="_blank" rel="nofollow sponsored noopener">암막커튼</a>
+<a href="https://bitl.bz/bZhmb6" target="_blank" rel="nofollow sponsored noopener">행거, 수납장</a>
+<a href="https://bitl.bz/ACovSV" target="_blank" rel="nofollow sponsored noopener">욕실 선반</a>
+<a href="https://bitl.bz/DqRK9o" target="_blank" rel="nofollow sponsored noopener">청소용품</a>
+<a href="https://bitl.bz/3jAH2o" target="_blank" rel="nofollow sponsored noopener">곰팡이, 물때 제거제</a>
+</div>
+
+<h3>책상을 다시 차릴 때</h3>
+<p class="sub">이사하면서 컴퓨터 자리를 새로 잡는 경우에만 보세요. 중고 노트북과 모니터를 다루는 곳입니다.</p>
+<div class="shopgrid">
+<a href="https://bitl.bz/QJ1gIm" target="_blank" rel="nofollow sponsored noopener">중고 노트북, 모니터</a>
+</div>
 </section>
 
 <section class="copy">
@@ -294,7 +343,7 @@ footer p{margin-bottom:8px;max-width:40em}
 </section>
 
 <footer>
-  <p>이 페이지는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+  <p>이 페이지는 제휴 마케팅 활동의 일환으로, 링크를 통한 구매 시 일정액의 수수료를 제공받습니다.</p>
   <p>자취 관련 글은 <a href="https://sololife29.blogspot.com" rel="noopener">sololife29.blogspot.com</a>에 더 있습니다.</p>
   <p>입력한 내용은 어디에도 저장되지 않습니다.</p>
 </footer>
@@ -322,7 +371,8 @@ const AFF = {
   mold     : { url:"https://bitl.bz/3jAH2o", text:"곰팡이·물때 제거제 보기" },
   curtain  : { url:"https://bitl.bz/qy6lpz", text:"암막커튼 보기" },
   rack     : { url:"https://bitl.bz/bZhmb6", text:"행거·수납장 보기" },
-  bathset  : { url:"https://bitl.bz/ACovSV", text:"욕실 선반 보기" }
+  bathset  : { url:"https://bitl.bz/ACovSV", text:"욕실 선반 보기" },
+  desk     : { url:"https://bitl.bz/QJ1gIm", text:"중고 노트북, 모니터 보기" }
 };
 function affLink(key, big){
   const a = AFF[key];
@@ -571,6 +621,18 @@ $("#reset").addEventListener("click", () => {
   personalItems.forEach(it => { it.checked = false; });
   $$(".own").forEach(c => { c.checked = false; c.closest(".chk").classList.remove("have"); });
   basket();
+});
+
+/* 링크 공유 */
+$("#share").addEventListener("click", async () => {
+  const url = "https://moving-helper.netlify.app/";
+  const data = { title:"이사 도우미", text:"이사 예정일만 넣으면 할 일이 날짜로 나옵니다", url };
+  try{
+    if(navigator.share){ await navigator.share(data); return; }
+    await navigator.clipboard.writeText(url);
+    $("#share").textContent = "주소를 복사했습니다";
+  }catch{ $("#share").textContent = "공유할 수 없습니다"; }
+  setTimeout(() => $("#share").textContent = "링크 공유", 1600);
 });
 /* 계산 도구: 입력은 메모리에서만 사용 */
 function calculateCosts(){
