@@ -158,6 +158,12 @@ footer{margin-top:44px;border-top:1px solid var(--rule);padding-top:16px;
   font-size:13px;color:var(--grey)}
 footer p{margin-bottom:8px;max-width:40em}
 .guides{margin-top:44px}
+.howto{margin-top:28px;background:var(--card);border:1px solid var(--rule);padding:18px 20px}
+.howto h2{font-size:18px;font-weight:800;margin-bottom:10px}
+.howto ol{padding-left:20px}
+.howto li{margin-bottom:8px;font-size:15px}
+.howto .more-link{margin-top:6px;font-size:15px;font-weight:700}
+.howto a{color:var(--ink)}
 .guides h2{font-size:20px;margin-bottom:10px}
 .guides ul{padding-left:20px}
 .guides li{margin-bottom:6px}
@@ -233,6 +239,16 @@ padding:13px 14px;border:1.5px solid var(--ink);background:var(--card)}
   <p class="hint">가입도 저장도 없습니다. 결과는 새로고침하면 사라집니다.</p>
 </section>
 
+<section class="howto" aria-labelledby="howtoTitle">
+<h2 id="howtoTitle">이렇게 쓰면 됩니다</h2>
+<ol>
+<li><strong>이사 예정일과 이사 종류</strong>를 고르고 준비 목록 만들기를 누릅니다. 처음 자취, 집 옮기기, 본가 복귀에 따라 할 일이 달라집니다.</li>
+<li><strong>할 일 순서</strong> 탭에서 D-30부터 이사 후 1주까지 날짜별로 할 일을 체크합니다. 오늘 기준으로 이미 지난 구간이 있다면 거기부터 처리하세요.</li>
+<li><strong>살림 점검</strong> 탭에서 이미 있는 물건만 체크하면, 사야 할 것만 따로 모입니다. 목록 복사로 메모 앱에 옮겨 두면 장 볼 때 바로 씁니다.</li>
+</ol>
+<p class="more-link"><a href="/guide-how-to-use.html">상황별 사용법과 자주 묻는 질문 보기 →</a></p>
+</section>
+
 <section id="out" hidden>
   <div class="summary">
     <div class="sumrow">
@@ -305,7 +321,7 @@ padding:13px 14px;border:1.5px solid var(--ink);background:var(--card)}
   <p>그래서 할 일을 한 덩어리로 보면 반드시 뭔가를 흘립니다. D-30, D-14, D-7, D-3, 당일, 이사 후 1주로 끊어서 봐야 각 구간에 마감이 걸린 일이 무엇인지 보입니다.</p>
 
   <h3>가장 많이 놓치는 세 가지</h3>
-  <p>첫째, 인터넷 이전 신청입니다. 이전 설치는 보통 일주일 전에 예약해야 이사 당일에 됩니다. 늦으면 며칠을 데이터로 버티게 됩니다. 둘째, 대형폐기물 스티커입니다. 안 붙이고 내놓으면 과태료가 나오고, 이사 당일에 신청하면 수거일이 안 맞습니다. 셋째, 계량기 사진입니다. 이사 당일 수도·전기·가스 계량기를 찍어두지 않으면 전 세입자나 다음 세입자의 요금을 떠안는 분쟁이 생깁니다.</p>
+  <p>첫째, 인터넷 이전 신청입니다. 이전 설치는 보통 일주일 전에 예약해야 이사 당일에 됩니다. 늦으면 며칠을 데이터로 버티게 됩니다. 둘째, 대형폐기물 스티커입니다. 안 붙이고 내놓으면 과태료가 나오고, 이사 당일에 신청하면 수거일이 안 맞습니다. 셋째, 계량기 사진입니다. 이사 당일 수도/전기/가스 계량기를 찍어두지 않으면 전 세입자나 다음 세입자의 요금을 떠안는 분쟁이 생깁니다.</p>
 
   <h3>살림은 다 사는 게 아니라 빠진 것만 산다</h3>
   <p>처음 자취를 시작할 때 준비물 목록을 그대로 다 사면 백만원 단위가 나옵니다. 실제로는 본가에서 가져올 수 있는 것, 첫 달에 없어도 되는 것, 없으면 당장 곤란한 것이 섞여 있습니다. 이 페이지의 살림 점검은 가진 것을 체크하면 빠진 것만 남기는 방식이라, 목록을 보고 순서를 정하기 쉽습니다.</p>
@@ -317,14 +333,14 @@ padding:13px 14px;border:1.5px solid var(--ink);background:var(--card)}
 <section class="calculators" aria-labelledby="calculatorTitle">
   <h2 id="calculatorTitle">이사 후 계산 도구</h2>
   <details>
-    <summary>전기요금 계산기 · 공식 계산 안내</summary>
+    <summary>전기요금 확인 방법 (한전 공식 계산기 연결)</summary>
     <p class="hint">대략적인 감을 잡는 용도의 안내입니다. 여기서는 정확한 원화 금액을 계산하지 않습니다.</p>
     <p class="tip">정확한 요금은 한전 공식 요금계산기에서 확인하세요. 실제 청구액과 차이가 날 수 있습니다.</p>
     <a class="aff" href="https://online.kepco.co.kr/" target="_blank" rel="noopener">한전ON에서 공식 요금계산기 확인</a>
   </details>
   <details>
     <summary>자취 월 생활비 계산기</summary>
-    <p class="hint">빈 값은 0원입니다. 고정비는 월세·관리비·통신비, 나머지는 변동비로 합산합니다.</p>
+    <p class="hint">빈 값은 0원입니다. 고정비는 월세/관리비/통신비, 나머지는 변동비로 합산합니다.</p>
     <div id="costFields" class="calculator-fields"><label for="cost-rent">월세 (원)<input id="cost-rent" type="number" min="0" step="1" inputmode="numeric"></label>
 <label for="cost-maintenance">관리비 (원)<input id="cost-maintenance" type="number" min="0" step="1" inputmode="numeric"></label>
 <label for="cost-electric">전기 (원)<input id="cost-electric" type="number" min="0" step="1" inputmode="numeric"></label>
@@ -351,6 +367,7 @@ padding:13px 14px;border:1.5px solid var(--ink);background:var(--card)}
 <section class="guides" aria-label="이사 가이드">
   <h2>이사 가이드</h2>
   <ul>
+    <li><a href="/guide-how-to-use.html">이사 도우미 사용법: 상황별로 이렇게 쓰면 됩니다</a></li>
     <li><a href="/guide-jeonip.html">전입신고와 확정일자, 이사 당일에 같이 끝내는 법</a></li>
     <li><a href="/guide-utilities.html">이사 전후 공과금/주소 이전 순서 정리 (전기, 가스, 수도, 인터넷, 우편물)</a></li>
     <li><a href="/guide-checkin-checkout.html">원룸 퇴실/입주 날 체크리스트: 보증금 분쟁 막는 사진 기록법</a></li>
@@ -376,18 +393,18 @@ padding:13px 14px;border:1.5px solid var(--ink);background:var(--card)}
    • 빈 문자열("")이면 링크가 표시되지 않는다. 안전하게 비워둬도 동작한다.
    ═════════════════════════════════════════════════════════════════════ */
 const AFF = {
-  // ── CPA (건당 정액 · 우선순위 높음) ──────────────────
-  internet : { url:"", text:"인터넷·TV 이전/신규 가입 비교하기" },
+  // ── CPA (건당 정액 / 우선순위 높음) ──────────────────
+  internet : { url:"", text:"인터넷/TV 이전/신규 가입 비교하기" },
   moveQuote: { url:"", text:"이사 업체 견적 한 번에 받기" },
   // ── CPS (쿠팡) ───────────────────────────────────────
   box      : { url:"https://bitl.bz/KqYb7i", text:"이사 박스 보기" },
-  tape     : { url:"https://bitl.bz/9ST3nL", text:"박스테이프·유성펜 보기" },
+  tape     : { url:"https://bitl.bz/9ST3nL", text:"박스테이프/유성펜 보기" },
   vacbag   : { url:"https://bitl.bz/gwRH0B", text:"의류 압축팩 보기" },
-  bubble   : { url:"https://bitl.bz/W3HBMS", text:"에어캡·완충재 보기" },
+  bubble   : { url:"https://bitl.bz/W3HBMS", text:"에어캡/완충재 보기" },
   clean    : { url:"https://bitl.bz/DqRK9o", text:"청소용품 세트 보기" },
-  mold     : { url:"https://bitl.bz/3jAH2o", text:"곰팡이·물때 제거제 보기" },
+  mold     : { url:"https://bitl.bz/3jAH2o", text:"곰팡이/물때 제거제 보기" },
   curtain  : { url:"https://bitl.bz/qy6lpz", text:"암막커튼 보기" },
-  rack     : { url:"https://bitl.bz/bZhmb6", text:"행거·수납장 보기" },
+  rack     : { url:"https://bitl.bz/bZhmb6", text:"행거/수납장 보기" },
   bathset  : { url:"https://bitl.bz/ACovSV", text:"욕실 선반 보기" },
   desk     : { url:"https://bitl.bz/QJ1gIm", text:"중고 노트북, 모니터 보기" }
 };
@@ -417,30 +434,30 @@ const STAGES = [
       {t:"박스테이프와 유성펜 준비", why:"박스 옆면에 방 이름을 쓰면 푸는 시간이 반으로 줍니다.", aff:"tape"},
       {t:"계절 지난 옷 압축팩에 넣기", why:"부피가 가장 크게 줄어드는 짐입니다.", aff:"vacbag"},
       {t:"안 쓰는 물건 중고로 처분", why:"거래에 2주는 걸립니다. 지금 올려야 팝니다."},
-      {t:"가전·가구 처분 결정", why:"안 팔리면 폐기물 비용이 듭니다.", only:["back"]}
+      {t:"가전/가구 처분 결정", why:"안 팔리면 폐기물 비용이 듭니다.", only:["back"]}
     ]},
   { t:"D-7", d:7, sub:"행정 처리 주간. 대부분의 사고가 여기서 난다.",
     tip:"인터넷 이전 설치는 보통 일주일 전 예약이 필요합니다. 약정이 남았다면 위약금과 신규 가입 지원금을 비교해 보는 편이 낫습니다.",
     items:[
-      {t:"인터넷·TV 이전 또는 신규 신청", why:"늦으면 며칠간 데이터로 버티게 됩니다.", aff:"internet", affBig:true},
+      {t:"인터넷/TV 이전 또는 신규 신청", why:"늦으면 며칠간 데이터로 버티게 됩니다.", aff:"internet", affBig:true},
       {t:"대형폐기물 스티커 신청", why:"안 붙이고 내놓으면 과태료 대상입니다."},
-      {t:"우편물 주소 이전 서비스 신청", why:"우체국에서 무료로 3개월간 전달해 줍니다."},
-      {t:"에어캡·완충재 준비", why:"그릇과 모니터는 신문지로는 안 됩니다.", aff:"bubble"},
-      {t:"도시가스 중지·개시 예약", why:"당일 전화하면 기사 배정이 안 됩니다."}
+      {t:"우편물 주소 이전 서비스 신청", why:"우체국, 주민센터에서 신청합니다. 같은 권역 이사는 무료, 권역을 넘으면 유료일 수 있습니다."},
+      {t:"에어캡/완충재 준비", why:"그릇과 모니터는 신문지로는 안 됩니다.", aff:"bubble"},
+      {t:"도시가스 중지/개시 예약", why:"당일 전화하면 기사 배정이 안 됩니다."}
     ]},
   { t:"D-3", d:3, sub:"비우고 닦는다.",
     tip:"청소 상태는 보증금 반환에 직접 영향을 줍니다. 특히 곰팡이와 실리콘 때는 빼기 전에 처리해 두세요.",
     items:[
       {t:"냉장고 비우기", why:"이사 12시간 전에는 전원을 빼야 물이 안 샙니다."},
       {t:"청소용품 준비", why:"새집 청소는 짐 들어오기 전이 유일한 기회입니다.", aff:"clean"},
-      {t:"곰팡이·물때 제거", why:"실리콘 곰팡이는 방치하면 보증금에서 깎입니다.", aff:"mold"},
-      {t:"귀중품·서류 따로 챙기기", why:"이삿짐 차에 싣지 않고 직접 들고 갑니다."},
-      {t:"관리비·공과금 정산 요청", why:"이사 후에 연락하면 처리가 늘어집니다."}
+      {t:"곰팡이/물때 제거", why:"실리콘 곰팡이는 방치하면 보증금에서 깎입니다.", aff:"mold"},
+      {t:"귀중품/서류 따로 챙기기", why:"이삿짐 차에 싣지 않고 직접 들고 갑니다."},
+      {t:"관리비/공과금 정산 요청", why:"이사 후에 연락하면 처리가 늘어집니다."}
     ]},
   { t:"이사 당일", d:0, sub:"만드는 날이 아니라 확인하는 날이다.",
     tip:"계량기 사진 세 장이 나중에 몇십만원짜리 증거가 됩니다. 수도, 전기, 가스 전부 찍으세요.",
     items:[
-      {t:"수도·전기·가스 계량기 사진 촬영", why:"전 집과 새집 모두. 요금 분쟁의 유일한 증거입니다."},
+      {t:"수도/전기/가스 계량기 사진 촬영", why:"전 집과 새집 모두. 요금 분쟁의 유일한 증거입니다."},
       {t:"빈 집 상태 사진 촬영", why:"원상복구 범위를 두고 다툴 때 씁니다."},
       {t:"짐 개수 확인 후 업체 결제", why:"트럭이 떠난 뒤에는 확인이 불가능합니다."},
       {t:"현관 비밀번호 변경", why:"전 세입자 번호가 그대로인 경우가 흔합니다."}
@@ -451,7 +468,7 @@ const STAGES = [
       {t:"전입신고하고 확정일자 받기", why:"주민센터 또는 정부24. 이사 당일 처리가 가장 안전합니다.", only:["first","move"]},
       {t:"보증금 반환 확인", why:"입금 전까지 열쇠를 넘기지 않는 편이 안전합니다.", only:["move","back"]},
       {t:"암막커튼 설치", why:"창 크기를 재고 주문해야 다시 사지 않습니다.", aff:"curtain", only:["first","move"]},
-      {t:"행거·수납장 배치", why:"수납이 정해져야 짐 푸는 게 끝납니다.", aff:"rack", only:["first","move"]},
+      {t:"행거/수납장 배치", why:"수납이 정해져야 짐 푸는 게 끝납니다.", aff:"rack", only:["first","move"]},
       {t:"욕실 선반 달기", why:"바닥에 두면 물때가 바로 생깁니다.", aff:"bathset", only:["first","move"]}
     ]}
 ];
@@ -462,8 +479,8 @@ const GEAR = [
     {n:"이불과 베개", d:"첫날 밤에 반드시 필요합니다"},
     {n:"수건 3장 이상", d:"세탁 주기를 생각하면 최소치입니다"},
     {n:"휴지와 물티슈", d:""},
-    {n:"손세정제·바디워시", d:""},
-    {n:"드라이버·가위·테이프", d:"조립과 개봉에 계속 씁니다"},
+    {n:"손세정제/바디워시", d:""},
+    {n:"드라이버/가위/테이프", d:"조립과 개봉에 계속 씁니다"},
     {n:"멀티탭", d:"원룸은 콘센트가 늘 모자랍니다"},
     {n:"쓰레기봉투", d:"지역 지정봉투를 확인하세요"}
   ]},
@@ -472,7 +489,7 @@ const GEAR = [
     {n:"전기밥솥 또는 즉석밥", d:""},
     {n:"식기와 수저", d:"2인분이면 충분합니다"},
     {n:"칼과 도마", d:""},
-    {n:"주방세제·수세미", d:""},
+    {n:"주방세제/수세미", d:""},
     {n:"밀폐용기", d:"남은 재료를 버리지 않게 해줍니다"}
   ]},
   { g:"세탁과 청소", items:[
@@ -493,7 +510,7 @@ const GEAR = [
     {n:"제습제 또는 제습기", d:"원룸 곰팡이의 대부분은 습도 문제입니다"},
     {n:"스탠드 조명", d:"천장등만 있으면 밤에 피로합니다"},
     {n:"서큘레이터", d:"냉난방비가 줄어듭니다"},
-    {n:"체중계·전신거울", d:""}
+    {n:"체중계/전신거울", d:""}
   ]}
 ];
 /* 살림 항목 → 제휴 키 연결 (없으면 링크 없음) */
@@ -518,7 +535,7 @@ function build(){
   const today = new Date(); today.setHours(0,0,0,0);
   const diff = Math.round((base - today) / 86400000);
 
-  $("#dday").textContent = diff > 0 ? `이사까지 ${diff}일 · ${md(base)}(${DOW[base.getDay()]})`
+  $("#dday").textContent = diff > 0 ? `이사까지 ${diff}일 / ${md(base)}(${DOW[base.getDay()]})`
                         : diff === 0 ? `오늘이 이사일입니다`
                         : `이사한 지 ${-diff}일`;
 
@@ -625,8 +642,8 @@ $$(".tab").forEach(t => t.addEventListener("click", () => {
 
 /* 목록 복사 */
 $("#copy").addEventListener("click", async () => {
-  const need = $$(".own").filter(c => !c.checked).map(c => "· " + c.dataset.n);
-  need.push(...personalItems.filter(it => !it.checked).map(it => "· " + it.name));
+  const need = $$(".own").filter(c => !c.checked).map(c => "/ " + c.dataset.n);
+  need.push(...personalItems.filter(it => !it.checked).map(it => "/ " + it.name));
   if(!need.length) return;
   const txt = "사야 할 것\n" + need.join("\n");
   try{ await navigator.clipboard.writeText(txt); $("#copy").textContent = "복사했습니다"; }
@@ -664,7 +681,7 @@ function calculateCosts(){
     $("#costResult").textContent = "입력 금액이 너무 큽니다. 금액을 줄여 주세요."; return;
   }
   const won = n => n.toLocaleString("ko-KR") + "원";
-  $("#costResult").textContent = `월 예상 생활비 ${won(fixed + variable)} · 고정비 ${won(fixed)} · 변동비 ${won(variable)}`;
+  $("#costResult").textContent = `월 예상 생활비 ${won(fixed + variable)} / 고정비 ${won(fixed)} / 변동비 ${won(variable)}`;
 }
 $("#costFields").addEventListener("input", calculateCosts);
 calculateCosts();
@@ -676,7 +693,7 @@ function calculateAC(){
     $("#acResult").textContent = "0보다 큰 유효한 면적을 입력하세요."; return;
   }
   const capacity = pyeong <= 6 ? "2.3~3.2" : pyeong <= 10 ? "3.2~4.0" : pyeong <= 13 ? "4.0~5.0" : pyeong <= 17 ? "5.0~6.0" : null;
-  $("#acResult").textContent = `${pyeong.toLocaleString("ko-KR", {maximumFractionDigits:2})}평 = ${sqm.toLocaleString("ko-KR", {maximumFractionDigits:2})}㎡ · 권장 냉방 용량(참고): ${capacity ? capacity + " kW" : "6.0 kW 이상"}`;
+  $("#acResult").textContent = `${pyeong.toLocaleString("ko-KR", {maximumFractionDigits:2})}평 = ${sqm.toLocaleString("ko-KR", {maximumFractionDigits:2})}㎡ / 권장 냉방 용량(참고): ${capacity ? capacity + " kW" : "6.0 kW 이상"}`;
 }
 $("#acArea").addEventListener("input", calculateAC);
 $("#acUnit").addEventListener("change", calculateAC);
